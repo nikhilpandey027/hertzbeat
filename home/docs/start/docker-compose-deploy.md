@@ -73,7 +73,7 @@ Run the `docker compose version` command to check if you have a Docker Compose e
 
    This setting also opens `1158` for remote Collectors; `14317` (OTLP/gRPC) is controlled separately by `HERTZBEAT_OTLP_BIND_ADDRESS`. See the `README.md` of the deployment solution for details.
 
-   The supplied `conf/application.yml` enables Basic and JWT authentication by default, and the Web UI uses JWT. Digest is opt-in. If you add `digest` to `sureness.auths`, unauthenticated protected APIs return a `WWW-Authenticate: Digest` challenge and a browser may display its native username/password dialog. Restart the HertzBeat container after changing the configuration. See [Authentication modes](docker-deploy#authentication-modes) for examples and TLS guidance.
+   The supplied `conf/application.yml` enables JWT authentication for the Web UI. Basic and Digest authentication are opt-in because their HTTP authentication challenges can make browsers display a native username/password dialog. To enable either for API clients, add `basic` or `digest` to `sureness.auths` in `conf/application.yml`, then restart the HertzBeat container. See [Authentication modes](docker-deploy#authentication-modes) for examples and TLS guidance.
 
    :::
 
