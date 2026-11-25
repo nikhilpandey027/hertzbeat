@@ -28,6 +28,18 @@ only for trusted OTLP senders. Before using `0.0.0.0`, replace bundled/default
 credentials, apply firewall or security-group restrictions, and configure TLS.
 Run `docker compose config` to inspect the final bindings before startup.
 
+## Browser authentication prompts
+
+The quick-start variants enable Basic and JWT authentication by default. The
+web UI uses JWT. Digest authentication is optional. When Digest is enabled,
+an unauthenticated request can trigger the browser's username and password
+dialog.
+
+If an existing 1.9.0 deployment shows this dialog, remove the `- digest`
+entry under `sureness.auths` in the host's `conf/application.yml`. Keep the
+`basic` and `jwt` entries and run `docker compose restart hertzbeat` from
+the directory containing the Compose file.
+
 
 - Use Postgresql + GreptimeDB as HertzBeat dependent storage -> [HertzBeat+PostgreSQL+GreptimeDB Solution](hertzbeat-postgresql-greptimedb)
 - Use Postgresql + VictoriaMetrics as HertzBeat dependent storage -> [HertzBeat+PostgreSQL+VictoriaMetrics Solution](hertzbeat-postgresql-victoria-metrics)
